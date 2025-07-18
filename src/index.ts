@@ -1,5 +1,6 @@
 import express from 'express';
 import serverConfig from "./config/serverConfig";
+import apiRouter from './routes';
 
 // Create an instance of Express
 const app = express();
@@ -9,9 +10,7 @@ const app = express();
 app.use(express.json());
 
 // A basic route
-app.get('/', (_req, res) => {
-  res.send('Hello from Express');
-});
+app.use("/api", apiRouter)
 
 // Start the server
 
