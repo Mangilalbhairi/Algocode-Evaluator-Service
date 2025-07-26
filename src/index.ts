@@ -4,6 +4,7 @@ import apiRouter from './routes';
 import sampleQueueProducer from './producers/sampleQueueProducer';
 import SampleWorker from './workers/SampleWorker';
 import serverAdapter from './config/bullBoardConfig';
+import runPython from './containers/runPythonDocker';
 // Create an instance of Express
 const app = express();
 
@@ -23,6 +24,9 @@ app.listen(serverConfig.PORT, () => {
     age:25
   },2)
   SampleWorker("SampleJob")
+ const code = 'print(20)'
+ const  inputCase = '10'
+   runPython(code, inputCase)
 
   console.log(`Server running at http://localhost:${serverConfig.PORT}`);
 });
