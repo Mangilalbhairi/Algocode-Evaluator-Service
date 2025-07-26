@@ -3,6 +3,7 @@ import serverConfig from "./config/serverConfig";
 import apiRouter from './routes';
 import sampleQueueProducer from './producers/sampleQueueProducer';
 import SampleWorker from './workers/SampleWorker';
+import serverAdapter from './config/bullBoardConfig';
 // Create an instance of Express
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // A basic route
 app.use("/api", apiRouter)
+app.use("/dashboard/queue", serverAdapter.getRouter())
 
 // Start the server
 
